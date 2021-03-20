@@ -33,7 +33,7 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        dps.setOnClickListener (
+        loginButton.setOnClickListener (
             Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainMenu1Fragment)
         )
     }

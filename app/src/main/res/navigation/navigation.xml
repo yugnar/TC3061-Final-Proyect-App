@@ -14,6 +14,42 @@
     </fragment>
     <fragment
         android:id="@+id/mainMenu1Fragment"
-        android:name="edu.itesm.tiendaperroingles.mainMenu1Fragment"
-        android:label="MainMenu1Fragment" />
+        android:name="edu.itesm.tiendaperroingles.MainMenu1Fragment"
+        android:label="fragment_main_menu1"
+        tools:layout="@layout/fragment_main_menu1" >
+        <action
+            android:id="@+id/action_mainMenu1Fragment_to_detailCatalogue2Fragment"
+            app:destination="@id/detailCatalogue2Fragment" />
+        <action
+            android:id="@+id/action_mainMenu1Fragment_to_appointments5Fragment"
+            app:destination="@id/appointments5Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailCatalogue2Fragment"
+        android:name="edu.itesm.tiendaperroingles.DetailCatalogue2Fragment"
+        android:label="fragment_detail_catalogue2"
+        tools:layout="@layout/fragment_detail_catalogue2" >
+        <action
+            android:id="@+id/action_detailCatalogue2Fragment_to_productDetail3Fragment"
+            app:destination="@id/productDetail3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productDetail3Fragment"
+        android:name="edu.itesm.tiendaperroingles.ProductDetail3Fragment"
+        android:label="fragment_product_detail3"
+        tools:layout="@layout/fragment_product_detail3" >
+        <action
+            android:id="@+id/action_productDetail3Fragment_to_paymentView4Fragment"
+            app:destination="@id/paymentView4Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentView4Fragment"
+        android:name="edu.itesm.tiendaperroingles.PaymentView4Fragment"
+        android:label="fragment_payment_view4"
+        tools:layout="@layout/fragment_payment_view4" />
+    <fragment
+        android:id="@+id/appointments5Fragment"
+        android:name="edu.itesm.tiendaperroingles.Appointments5Fragment"
+        android:label="fragment_appointments5"
+        tools:layout="@layout/fragment_appointments5" />
 </navigation>
