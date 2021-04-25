@@ -1,11 +1,21 @@
 package edu.itesm.tiendaperroingles
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_detail_catalogue2.*
 import kotlinx.android.synthetic.main.fragment_main_menu1.*
 
@@ -23,6 +33,7 @@ class DetailCatalogue2Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +51,21 @@ class DetailCatalogue2Fragment : Fragment() {
         return inflater.inflate(R.layout.fragment_detail_catalogue2, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        detailButton.setOnClickListener (
-            Navigation.createNavigateOnClickListener(R.id.action_detailCatalogue2Fragment_to_productDetail3Fragment)
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        recycler_catalogue.apply {
+            layoutManager = GridLayoutManager(activity, 2)
+            db.collection("catalogue").get().addOnSuccessListener { result ->
+                var items = ArrayList<Catalogue>()
+                for (document in result) {
+                    val catalogueItem = document.toObject(Catalogue::class.java)
+                    items.add(catalogueItem)
+                    Log.d(TAG, "$items")
+                }
+                adapter = CatalogueAdapter(items)
+            }.addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents.", exception)
+            }
+        }
     }
 }

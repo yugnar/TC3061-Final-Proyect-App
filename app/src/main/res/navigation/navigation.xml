@@ -44,6 +44,8 @@
         <action
             android:id="@+id/action_productDetail3Fragment_to_paymentView4Fragment"
             app:destination="@id/paymentView4Fragment" />
+        <argument android:name="catalogueItems"
+            app:argType="edu.itesm.tiendaperroingles.Catalogue" />
     </fragment>
     <fragment
         android:id="@+id/paymentView4Fragment"
