@@ -70,5 +70,10 @@ class LoginFragment : Fragment() {
                 Toast.makeText(context,"Please enter an email and password.", Toast.LENGTH_LONG).show()
             }
         }
+
+        registerText.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_registerFragment)
+        )
+
     }
 }
