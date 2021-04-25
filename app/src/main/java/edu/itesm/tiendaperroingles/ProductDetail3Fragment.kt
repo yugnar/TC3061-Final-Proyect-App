@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_detail_catalogue2.*
-import kotlinx.android.synthetic.main.fragment_detail_catalogue2.detailButton
 import kotlinx.android.synthetic.main.fragment_product_detail3.*
 
 // TODO: Rename parameter arguments, choose names that match
