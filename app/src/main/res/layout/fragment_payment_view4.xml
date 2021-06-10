@@ -6,7 +6,7 @@ android:id="@+id/frameLayout"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="#FFAECA"
-tools:context=".PaymentView4Fragment">
+tools:context=".view.PaymentView4Fragment">
 
 <TextView
     android:id="@+id/Payment4Title"
