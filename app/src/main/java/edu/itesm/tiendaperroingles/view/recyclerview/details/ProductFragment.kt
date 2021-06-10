@@ -5,13 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import edu.itesm.tiendaperroingles.R
 import edu.itesm.tiendaperroingles.databinding.FragmentProductBinding
+import kotlinx.android.synthetic.main.fragment_product.*
+import kotlin.properties.Delegates
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -19,19 +19,15 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ProductFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     private var _binding : FragmentProductBinding? = null
     private val binding get() = _binding!!
 
+    private val args by navArgs<ProductFragmentArgs>()
+    private var cantidad = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
     }
 
     override fun onCreateView(
@@ -42,6 +38,18 @@ class ProductFragment : Fragment() {
         _binding = FragmentProductBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Glide.with(binding.root).load(args.productDetails.image).into(binding.imagenProducto)
+        binding.tituloProducto.text = args.productDetails.name
+        binding.precioProducto.text = args.productDetails.price
+
+        binding.precioFinal.text = "$cantidad"
+
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

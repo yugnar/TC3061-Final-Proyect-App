@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import edu.itesm.tiendaperroingles.R
 import edu.itesm.tiendaperroingles.databinding.ActivitySplashBinding
-import edu.itesm.tiendaperroingles.databinding.FragmentRegisterBinding
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding

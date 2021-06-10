@@ -59,7 +59,7 @@ class LoginFragment : Fragment() {
                     editTextTextPassword.text.toString()
                 ).addOnCompleteListener{
                     if(it.isSuccessful){
-                        loginButton.findNavController().navigate(R.id.action_loginFragment_to_mainMenu1Fragment)
+                        loginButton.findNavController().navigate(R.id.action_loginFragment_to_mainMenuFragment)
                         //Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_mainMenu1Fragment)
                     }else{
                         Toast.makeText(context,"User/password incorrect.", Toast.LENGTH_LONG).show()

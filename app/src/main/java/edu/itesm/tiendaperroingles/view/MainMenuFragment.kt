@@ -7,22 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import edu.itesm.tiendaperroingles.R
-import edu.itesm.tiendaperroingles.databinding.FragmentMainMenu1Binding
-import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_main_menu1.*
-
+import edu.itesm.tiendaperroingles.databinding.FragmentMainMenuBinding
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MainMenu1Fragment.newInstance] factory method to
+ * Use the [MainMenuFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MainMenu1Fragment : Fragment() {
-    private var _binding: FragmentMainMenu1Binding? = null
+class MainMenuFragment : Fragment() {
+    private var _binding: FragmentMainMenuBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onCreateView(
@@ -30,23 +28,14 @@ class MainMenu1Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentMainMenu1Binding.inflate(inflater, container, false)
+        _binding = FragmentMainMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        catalogueButton.setOnClickListener (
-            Navigation.createNavigateOnClickListener(R.id.action_mainMenu1Fragment_to_catalogueListFragment)
+        binding.cat.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_mainMenuFragment_to_catalogueListFragment)
         )
-        citasButton.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.action_mainMenu1Fragment_to_appointments5Fragment)
-        )
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

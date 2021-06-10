@@ -9,32 +9,17 @@
         android:name="edu.itesm.tiendaperroingles.view.LoginFragment"
         android:label="LoginFragment" >
         <action
-            android:id="@+id/action_loginFragment_to_mainMenu1Fragment"
-            app:destination="@id/mainMenu1Fragment" />
-        <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/mainMenu1Fragment"
-        android:name="edu.itesm.tiendaperroingles.view.MainMenu1Fragment"
-        android:label="fragment_main_menu1"
-        tools:layout="@layout/fragment_main_menu1" >
         <action
-            android:id="@+id/action_mainMenu1Fragment_to_appointments5Fragment"
-            app:destination="@id/appointments5Fragment" />
-        <action
-            android:id="@+id/action_mainMenu1Fragment_to_catalogueListFragment"
-            app:destination="@id/catalogueListFragment" />
+            android:id="@+id/action_loginFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetail3Fragment"
         android:name="edu.itesm.tiendaperroingles.view.ProductDetail3Fragment"
         android:label="fragment_product_detail3"
         tools:layout="@layout/fragment_product_detail3" >
-        <action
-            android:id="@+id/action_productDetail3Fragment_to_paymentView4Fragment"
-            app:destination="@id/paymentView4Fragment" />
         <argument android:name="catalogueItems"
             app:argType="edu.itesm.tiendaperroingles.model.CatalogueModel" />
     </fragment>
@@ -62,7 +47,25 @@
         android:label="fragment_catalogue_list"
         tools:layout="@layout/fragment_catalogue_list" >
         <action
-            android:id="@+id/action_catalogueListFragment_to_productDetail3Fragment"
-            app:destination="@id/productDetail3Fragment" />
+            android:id="@+id/action_catalogueListFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="edu.itesm.tiendaperroingles.view.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_catalogueListFragment"
+            app:destination="@id/catalogueListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="edu.itesm.tiendaperroingles.view.recyclerview.details.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
+        <argument
+            android:name="ProductDetails"
+            app:argType="edu.itesm.tiendaperroingles.model.CatalogueModel" />
     </fragment>
 </navigation>

@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import edu.itesm.tiendaperroingles.R
 import edu.itesm.tiendaperroingles.databinding.CatalogueElementLayoutBinding
 import edu.itesm.tiendaperroingles.model.CatalogueModel
 import edu.itesm.tiendaperroingles.view.recyclerview.list.CatalogueListFragmentDirections
@@ -28,10 +30,14 @@ class CatalogueAdapter :RecyclerView.Adapter<CatalogueAdapter.CatalogueViewHolde
             with(catalogueItems[position]) {
                 binding.tituloProducto.text = this.name
                 binding.precioProducto.text = this.price
+                Glide.with(binding.root)
+                    .load(this.image)
+                    .placeholder(R.drawable.cama_perro_template)
+                    .into(binding.imagenProducto)
 
                 itemView.setOnClickListener {
                     val action =
-                        CatalogueListFragmentDirections.actionCatalogueListFragmentToProductDetail3Fragment(this)
+                       CatalogueListFragmentDirections.actionCatalogueListFragmentToProductFragment(this)
                     itemView.findNavController().navigate(action)
                 }
             }
