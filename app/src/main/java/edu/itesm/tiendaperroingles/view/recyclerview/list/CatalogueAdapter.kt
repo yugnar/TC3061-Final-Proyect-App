@@ -29,7 +29,7 @@ class CatalogueAdapter :RecyclerView.Adapter<CatalogueAdapter.CatalogueViewHolde
         with(holder) {
             with(catalogueItems[position]) {
                 binding.tituloProducto.text = this.name
-                binding.precioProducto.text = this.price
+                binding.precioProducto.text = "$${this.price}"
                 Glide.with(binding.root)
                     .load(this.image)
                     .placeholder(R.drawable.cama_perro_template)

@@ -1,6 +1,8 @@
 package edu.itesm.tiendaperroingles.view.recyclerview.details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +26,7 @@ class ProductFragment : Fragment() {
 
     private val args by navArgs<ProductFragmentArgs>()
     private var cantidad = 0
+    private var precioFinal = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +42,42 @@ class ProductFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         Glide.with(binding.root).load(args.productDetails.image).into(binding.imagenProducto)
         binding.tituloProducto.text = args.productDetails.name
-        binding.precioProducto.text = args.productDetails.price
+        binding.precioProducto.text = "$${args.productDetails.price}"
 
-        binding.precioFinal.text = "$cantidad"
+        binding.cantidad.text = "$cantidad"
+        binding.precioFinal.text = "$$precioFinal"
+
+        binding.mas.setOnClickListener{
+            cantidad++
+            val precio = args.productDetails.price
+
+            if (precio != null) {
+                precioFinal = cantidad * precio.toInt()
+                binding.cantidad.text = "$cantidad"
+                binding.precioFinal.text = "$$precioFinal"
+            }
+        }
+        binding.menos.setOnClickListener {
+            val precio = args.productDetails.price
+            if(cantidad > 0) {
+                cantidad--
+                if (precio != null) {
+                    precioFinal = cantidad * precio.toInt()
+                    binding.cantidad.text = "$cantidad"
+                    binding.precioFinal.text = "$$precioFinal"
+                }
+            }
+        }
+
+        binding.carrito.setOnClickListener {
+            //TODO agregar al carrito
+        }
 
     }
 
