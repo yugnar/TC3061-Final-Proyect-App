@@ -1,5 +1,6 @@
 package edu.itesm.tiendaperroingles.view
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import edu.itesm.tiendaperroingles.R
 import edu.itesm.tiendaperroingles.databinding.FragmentRegisterBinding
@@ -84,15 +86,18 @@ class RegisterFragment : Fragment() {
 
     private fun usuarioCreado(){
         val builder = AlertDialog.Builder(requireContext())
-        with(builder){
-            setTitle("Registro exitoso")
-            setMessage("¡Nuevo usuario creado con éxito!")
-            /*setPositiveButton("Ok", DialogInterface.OnClickListener { dialog, which ->
-                loginButton.findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-            })*/
-            setPositiveButton("Ok",null)
-            show()
-        }
+        builder.setMessage("¡Nuevo usuario creado con éxito!")
+            .setCancelable(false)
+            .setPositiveButton("Ok", DialogInterface.OnClickListener{
+                dialog, id -> finish()
+            })
+        val alert = builder.create()
+        alert.setTitle("Registro exitoso")
+        alert.show()
+    }
+
+    private fun finish(){
+        view?.findNavController()?.navigate(R.id.action_registerFragment_to_loginFragment)
     }
 
     override fun onDestroyView() {

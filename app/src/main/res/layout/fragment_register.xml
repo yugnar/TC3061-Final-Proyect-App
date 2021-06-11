@@ -49,13 +49,14 @@ android:background="@color/white">
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="331dp"
-        android:layout_height="272dp"
+        android:layout_width="144dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.119"
         app:srcCompat="@drawable/dog_logo" />
 
     <CheckBox

@@ -1,11 +1,13 @@
 package edu.itesm.tiendaperroingles.view
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -76,6 +78,40 @@ class LoginFragment : Fragment() {
             Navigation.createNavigateOnClickListener(R.id.action_loginFragment_to_registerFragment)
         )
 
+        forgotPasswordText.setOnClickListener {
+
+            if(editTextTextEmailAddress.text.isNotEmpty()){
+                Firebase.auth.sendPasswordResetEmail(editTextTextEmailAddress.text.toString())
+
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setMessage("Se ha enviado un correo para reestablecer tu contraseña al correo ingresado, si existe.")
+                    .setCancelable(false)
+                    .setPositiveButton("Ok", DialogInterface.OnClickListener{
+                            dialog, id -> finish()
+                    })
+                val alert = builder.create()
+                alert.setTitle("Correo enviado.")
+                alert.show()
+            }
+            else{
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setMessage("Por favor ingresa un correo al cuál reestablecer la contraseña.")
+                    .setCancelable(false)
+                    .setPositiveButton("Ok", DialogInterface.OnClickListener{
+                            dialog, id -> finish()
+                    })
+                val alert = builder.create()
+                alert.setTitle("Error. Sin información de correo.")
+                alert.show()
+            }
+
+        }
+
+    }
+
+    private fun finish(){
+        editTextTextEmailAddress.text.clear()
+        editTextTextPassword.text.clear()
     }
 
     override fun onDestroyView() {
