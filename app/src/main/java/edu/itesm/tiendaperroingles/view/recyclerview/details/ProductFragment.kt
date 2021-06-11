@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import edu.itesm.tiendaperroingles.R
 import edu.itesm.tiendaperroingles.databinding.FragmentProductBinding
 import kotlinx.android.synthetic.main.fragment_product.*
@@ -76,7 +78,20 @@ class ProductFragment : Fragment() {
         }
 
         binding.carrito.setOnClickListener {
-            //TODO agregar al carrito
+            val name = args.productDetails.name
+            val price = args.productDetails.price
+            val image = args.productDetails.image
+            val quantity = cantidad // Might delete later
+
+            val usuario = Firebase.auth.currentUser
+
+            /*reference = database.getReference("cart/${usuario.uid}")
+
+            val id = reference.push().key
+            val comic = Comic(
+                id.toString(), title, description, picture, cost
+            )
+            reference.child(id!!).setValue(comic)*/
         }
 
     }
