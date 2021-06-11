@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import edu.itesm.tiendaperroingles.R
 import edu.itesm.tiendaperroingles.databinding.FragmentProductBinding
@@ -26,13 +28,16 @@ class ProductFragment : Fragment() {
     private var _binding : FragmentProductBinding? = null
     private val binding get() = _binding!!
 
+    private lateinit var database: FirebaseDatabase
+    private lateinit var reference: DatabaseReference
+
     private val args by navArgs<ProductFragmentArgs>()
     private var cantidad = 0
     private var precioFinal = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        database = FirebaseDatabase.getInstance()
     }
 
     override fun onCreateView(
@@ -85,13 +90,13 @@ class ProductFragment : Fragment() {
 
             val usuario = Firebase.auth.currentUser
 
-            /*reference = database.getReference("cart/${usuario.uid}")
+            reference = database.getReference("cart/${usuario!!.uid}")
 
             val id = reference.push().key
-            val comic = Comic(
-                id.toString(), title, description, picture, cost
+            val item = CartItemModel(
+                id.toString(), name, price, image, quantity
             )
-            reference.child(id!!).setValue(comic)*/
+            reference.child(id!!).setValue(item)
         }
 
     }
