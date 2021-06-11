@@ -37,5 +37,9 @@ class MainMenuFragment : Fragment() {
         binding.cat.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_mainMenuFragment_to_catalogueListFragment)
         )
+
+        binding.calendario.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_mainMenuFragment_to_calendarFragment)
+        )
     }
 }
