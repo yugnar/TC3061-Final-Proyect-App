@@ -8,13 +8,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="calendarFragment">
+                  <entry key="appointments5Fragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-43" />
-                            <option name="y" value="349" />
+                            <option name="x" value="-322" />
+                            <option name="y" value="282" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -25,8 +25,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="61" />
-                            <option name="y" value="-57" />
+                            <option name="x" value="-89" />
+                            <option name="y" value="-54" />
                           </Point>
                         </option>
                         <option name="myPositions">
@@ -72,17 +72,12 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-295" />
-                            <option name="y" value="-61" />
+                            <option name="x" value="-318" />
+                            <option name="y" value="-54" />
                           </Point>
                         </option>
                         <option name="myPositions">
                           <map>
-                            <entry key="action_mainMenuFragment_to_calendarFragment">
-                              <value>
-                                <LayoutPositions />
-                              </value>
-                            </entry>
                             <entry key="action_mainMenuFragment_to_catalogueListFragment">
                               <value>
                                 <LayoutPositions />
@@ -98,8 +93,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-915" />
-                            <option name="y" value="-115" />
+                            <option name="x" value="-87" />
+                            <option name="y" value="287" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -110,8 +105,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-811" />
-                            <option name="y" value="101" />
+                            <option name="x" value="159" />
+                            <option name="y" value="288" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -122,8 +117,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="383" />
-                            <option name="y" value="-55" />
+                            <option name="x" value="162" />
+                            <option name="y" value="-54" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -134,8 +129,8 @@
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-560" />
-                            <option name="y" value="303" />
+                            <option name="x" value="-547" />
+                            <option name="y" value="306" />
                           </Point>
                         </option>
                         <option name="myPositions">
