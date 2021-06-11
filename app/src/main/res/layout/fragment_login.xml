@@ -49,30 +49,18 @@
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="331dp"
-        android:layout_height="272dp"
+        android:layout_width="144dp"
+        android:layout_height="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="0.119"
         app:srcCompat="@drawable/dog_logo" />
 
-    <CheckBox
-        android:id="@+id/keepLogin"
-        android:layout_width="193dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="19dp"
-        android:text="Keep me logged in."
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.0" />
-
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/forgotPasswordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -97,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.716"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordText"
         app:layout_constraintVertical_bias="0.058" />
 
     <TextView
@@ -111,7 +99,7 @@
         app:layout_constraintEnd_toStartOf="@+id/registerText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordText"
         app:layout_constraintVertical_bias="0.029" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
