@@ -1,4 +1,4 @@
-package edu.itesm.tiendaperroingles.view
+package edu.itesm.tiendaperroingles.view.recyclerview.list
 
 import android.content.Context
 import android.os.Bundle
@@ -9,16 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
-import edu.itesm.tiendaperroingles.R
 import edu.itesm.tiendaperroingles.databinding.FragmentCartBinding
 import edu.itesm.tiendaperroingles.view.recyclerview.details.CartItemModel
-import edu.itesm.tiendaperroingles.view.recyclerview.details.ProductFragment
-import kotlinx.android.synthetic.main.fragment_cart.*
 
 abstract class SwipeToDelete (context: Context,
                               direccion: Int, direccionArrastre: Int):
