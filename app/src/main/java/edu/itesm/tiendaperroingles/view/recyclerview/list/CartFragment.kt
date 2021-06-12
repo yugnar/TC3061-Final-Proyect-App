@@ -12,9 +12,11 @@ import com.google.firebase.ktx.Firebase
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.billingclient.api.*
 import com.google.firebase.database.*
 import edu.itesm.tiendaperroingles.databinding.FragmentCartBinding
 import edu.itesm.tiendaperroingles.view.recyclerview.details.CartItemModel
+
 
 abstract class SwipeToDelete (context: Context,
                               direccion: Int, direccionArrastre: Int):
@@ -37,16 +39,22 @@ class CartFragment : Fragment() {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
-    private val userCart= ArrayList<CartItemModel>()
+    private val userCart = ArrayList<CartItemModel>()
+
+    private lateinit var billingClient: BillingClient
+    private val skuList = listOf("producto1")
 
     private var _binding: FragmentCartBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         database = FirebaseDatabase.getInstance()
         val usuario = Firebase.auth.currentUser
         reference = database.getReference("cart/${usuario!!.uid}")
+
+        setupBillingClient()
 
     }
 
@@ -61,16 +69,76 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(userCart.size == 0){
+        if (userCart.size == 0) {
             retrieveCartData()
-        }
-        else{
-            binding.recyclerCart.apply{
+        } else {
+            binding.recyclerCart.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = CartAdapter(userCart, context)
             }
         }
     }
+
+    private fun setupBillingClient() {
+        val purchasesUpdatedListener =
+            PurchasesUpdatedListener { billingResult, purchases ->
+                // To be implemented in a later section.
+            }
+
+        billingClient = BillingClient.newBuilder(requireContext())
+            .enablePendingPurchases()
+            .setListener(purchasesUpdatedListener)
+            .build()
+
+        billingClient.startConnection(object : BillingClientStateListener {
+            override fun onBillingSetupFinished(billingResult: BillingResult) {
+                Log.d("billing", billingResult.responseCode.toString())
+                if (billingResult.responseCode ==  BillingClient.BillingResponseCode.OK) {
+                    // The BillingClient is ready. You can query purchases here.
+                    loadAllSKUs()
+                }
+            }
+            override fun onBillingServiceDisconnected() {
+                // Try to restart the connection on the next request to
+                // Google Play by calling the startConnection() method.
+            }
+
+        })
+    }
+
+    private fun loadAllSKUs() = if (billingClient.isReady) {
+        val params = SkuDetailsParams
+            .newBuilder()
+            .setSkusList(skuList)
+            .setType(BillingClient.SkuType.INAPP)
+            .build()
+
+        billingClient.querySkuDetailsAsync(params) { billingResult, skuDetailsList ->
+            if (skuDetailsList != null) {
+                Log.d("sku", skuDetailsList.toString())
+                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && skuDetailsList.isNotEmpty()) {
+                    for (skuDetails in skuDetailsList) {
+                        if (skuDetails.sku == "producto1")
+                            binding.checkoutButton.setOnClickListener {
+                                val billingFlowParams = BillingFlowParams
+                                    .newBuilder()
+                                    .setSkuDetails(skuDetails)
+                                    .build()
+                                billingClient.launchBillingFlow(
+                                    requireActivity(),
+                                    billingFlowParams
+                                )
+                            }
+                    }
+                }
+            }
+        }
+
+    } else {
+        println("Billing Client not ready")
+    }
+
+
 
     private fun retrieveCartData(){
         binding.recyclerCart.apply {
