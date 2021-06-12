@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import edu.itesm.tiendaperroingles.view.recyclerview.details.CartItemModel
-import edu.itesm.tiendaperroingles.view.R
+import edu.itesm.tiendaperroingles.R
 
 class CartAdapter (private val items : List<CartItemModel>, val context: Context)
     : RecyclerView.Adapter<CartAdapter.ItemViewHolder>(){
@@ -21,11 +21,11 @@ class CartAdapter (private val items : List<CartItemModel>, val context: Context
 
             val name = row.findViewById<TextView>(R.id.row_name)
             val quantity = row.findViewById<TextView>(R.id.row_quantity)
-            val price = row.findViewById<TextView>(R.id.row_price)
+            val price = row.findViewById<TextView>(R.id.row_cost)
             val image = row.findViewById<ImageView>(R.id.row_image)
 
             name.text = property.name
-            quantity.text = property.quantity
+            quantity.text = property.quantity.toString()
             price.text = "$ - test || - " + property.price
 
             Glide.with(row.context)
@@ -38,7 +38,7 @@ class CartAdapter (private val items : List<CartItemModel>, val context: Context
     //Crea el renglón
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val renglon_vista = inflater.inflate(R.layout.recycler_row,parent, false)
+        val renglon_vista = inflater.inflate(R.layout.recycler_cart_row,parent, false)
         return ItemViewHolder(renglon_vista)
     }
 

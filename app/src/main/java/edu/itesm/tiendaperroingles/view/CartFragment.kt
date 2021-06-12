@@ -111,7 +111,7 @@ class CartFragment : Fragment() {
 
     private fun borraItem(item: CartItemModel){
         val usuario= Firebase.auth.currentUser
-        val referencia= FirebaseDatabase.getInstance().getReference("cart/${usuario.uid}/${item.id}")
+        val referencia= FirebaseDatabase.getInstance().getReference("cart/${usuario!!.uid}/${item.id}")
         userCart.remove(item)
         referencia.removeValue()
     }
