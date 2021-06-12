@@ -37,5 +37,8 @@ class MainMenuFragment : Fragment() {
         binding.cat.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_mainMenuFragment_to_catalogueListFragment)
         )
+        binding.carrito.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.action_mainMenuFragment_to_cartFragment)
+        )
     }
 }
