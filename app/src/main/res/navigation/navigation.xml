@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="edu.itesm.tiendaperroingles.view.CartFragment"
+        android:name="edu.itesm.tiendaperroingles.view.recyclerview.list.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
