@@ -24,8 +24,8 @@ class CartAdapter (private val items : List<CartItemModel>, val context: Context
             val image = row.findViewById<ImageView>(R.id.row_image)
 
             name.text = property.name
-            quantity.text = property.quantity.toString()
-            price.text = "$ - test || - " + property.price
+            quantity.text = "Cantidad: " + property.quantity.toString()
+            price.text = "$ " + property.price
 
             Glide.with(row.context)
                 .load(property.image)
