@@ -29,6 +29,11 @@
         android:label="fragment_payment_view4"
         tools:layout="@layout/fragment_payment_view4" />
     <fragment
+        android:id="@+id/appointments5Fragment"
+        android:name="edu.itesm.tiendaperroingles.view.Appointments5Fragment"
+        android:label="fragment_appointments5"
+        tools:layout="@layout/fragment_appointments5" />
+    <fragment
         android:id="@+id/registerFragment"
         android:name="edu.itesm.tiendaperroingles.view.RegisterFragment"
         android:label="fragment_register" >
@@ -54,8 +59,8 @@
             android:id="@+id/action_mainMenuFragment_to_catalogueListFragment"
             app:destination="@id/catalogueListFragment" />
         <action
-            android:id="@+id/action_mainMenuFragment_to_calendarFragment"
-            app:destination="@id/calendarFragment" />
+            android:id="@+id/action_mainMenuFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -67,8 +72,8 @@
             app:argType="edu.itesm.tiendaperroingles.model.CatalogueModel" />
     </fragment>
     <fragment
-        android:id="@+id/calendarFragment"
-        android:name="edu.itesm.tiendaperroingles.view.CalendarFragment"
-        android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        android:id="@+id/cartFragment"
+        android:name="edu.itesm.tiendaperroingles.view.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
 </navigation>
