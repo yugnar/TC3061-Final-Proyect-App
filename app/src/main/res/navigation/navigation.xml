@@ -16,23 +16,10 @@
             app:destination="@id/mainMenuFragment" />
     </fragment>
     <fragment
-        android:id="@+id/productDetail3Fragment"
-        android:name="edu.itesm.tiendaperroingles.view.ProductDetail3Fragment"
-        android:label="fragment_product_detail3"
-        tools:layout="@layout/fragment_product_detail3" >
-        <argument android:name="catalogueItems"
-            app:argType="edu.itesm.tiendaperroingles.model.CatalogueModel" />
-    </fragment>
-    <fragment
         android:id="@+id/paymentView4Fragment"
         android:name="edu.itesm.tiendaperroingles.view.PaymentView4Fragment"
         android:label="fragment_payment_view4"
         tools:layout="@layout/fragment_payment_view4" />
-    <fragment
-        android:id="@+id/appointments5Fragment"
-        android:name="edu.itesm.tiendaperroingles.view.Appointments5Fragment"
-        android:label="fragment_appointments5"
-        tools:layout="@layout/fragment_appointments5" />
     <fragment
         android:id="@+id/registerFragment"
         android:name="edu.itesm.tiendaperroingles.view.RegisterFragment"
@@ -61,6 +48,9 @@
         <action
             android:id="@+id/action_mainMenuFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_calendarFragment"
+            app:destination="@id/calendarFragment" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -76,4 +66,9 @@
         android:name="edu.itesm.tiendaperroingles.view.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="edu.itesm.tiendaperroingles.view.CalendarFragment"
+        android:label="fragment_calendar"
+        tools:layout="@layout/fragment_calendar" />
 </navigation>

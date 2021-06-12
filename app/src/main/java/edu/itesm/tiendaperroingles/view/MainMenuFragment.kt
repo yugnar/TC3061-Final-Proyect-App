@@ -41,5 +41,9 @@ class MainMenuFragment : Fragment() {
         binding.calendario.setOnClickListener(
             Navigation.createNavigateOnClickListener(R.id.action_mainMenuFragment_to_calendarFragment)
         )
+
+        binding.carrito.setOnClickListener  (
+            Navigation.createNavigateOnClickListener(R.id.action_mainMenuFragment_to_cartFragment)
+        )
     }
 }
